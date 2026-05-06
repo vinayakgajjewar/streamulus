@@ -68,39 +68,36 @@
 // Functor that prints whatever it gets. 
 // Stremify<print> is a stream function that prints every
 // element of a stream.
-struct print 
-{
+struct print {
     template<typename T>
-    T operator()(const T& value) const
-    { 
+    T operator()(const T &value) const {
         std::cout << value << std::endl;
         return value;
     }
 };
 
 
-
 void sliding_window_function_example();
 
-void sliding_window_function_example()
-{
+void sliding_window_function_example() {
     using namespace streamulus;
-    
+
     InputStream<double> ts = NewInputStream<double>("TS", true /* verbose */);
     Streamulus engine;
-    
+
     boost::proto::terminal<window_>::type window = {};
     // Print the sum of the last three numbers:
-    engine.Subscribe(Streamify<print>(Streamify<WindowFunc<WindowSum<double> > >(window(3,ts)) ));
-        
-    for (int i=0; i<15; i++)
+    engine.Subscribe(Streamify<print>(Streamify<WindowFunc<WindowSum<double> > >(window(3, ts))));
+
+    for (int i = 0; i < 15; i++)
         InputStreamPut(ts, double(i % 5));
 }
 
 #if defined(USE_MAIN)
-int main()
-{
+
+int main() {
     sliding_window_function_example();
     return 0;
 }
+
 #endif

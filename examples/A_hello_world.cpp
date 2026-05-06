@@ -45,11 +45,9 @@
 // print is a functor that prints whatever it gets. 
 // Stremify<print> is a stream function that prints every
 // element of a stream.
-struct print 
-{    
+struct print {
     template<typename T>
-    T operator()(const T& value) const
-    { 
+    T operator()(const T &value) const {
         std::cout << value << std::endl;
         return value;
     }
@@ -57,16 +55,15 @@ struct print
 
 void hello_stream();
 
-void hello_stream()
-{
+void hello_stream() {
     using namespace streamulus;
 
     // Define an input stream of strings, whose name is "Input Stream"
     InputStream<std::string> s = NewInputStream<std::string>("Input Stream", true /* verbose */);
-    
+
     // Construct a streamulus instance
-    Streamulus streamulus_engine;            
-    
+    Streamulus streamulus_engine;
+
     // Define some constants
     std::string hello("Hello ");
     std::string exc("!");
@@ -76,20 +73,21 @@ void hello_stream()
     //     print it 
     //     emit it into the output stream
     // 
-    
-    
-    streamulus_engine.Subscribe(Streamify<print>(hello + s + exc));    
+
+
+    streamulus_engine.Subscribe(Streamify<print>(hello + s + exc));
 
     // Insert data to the input stream
     InputStreamPut<std::string>(s, "World");
     InputStreamPut<std::string>(s, "London");
-    InputStreamPut<std::string>(s, "Streamulus");    
+    InputStreamPut<std::string>(s, "Streamulus");
 }
 
 #if defined(USE_MAIN)
-int main()
-{
+
+int main() {
     hello_stream();
     return 0;
 }
+
 #endif

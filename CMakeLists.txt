@@ -1,7 +1,7 @@
-cmake_minimum_required(VERSION 3.3)
+cmake_minimum_required(VERSION 3.5)
 project(streamulus)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17")
 
 set(BOOST_ROOT "${CMAKE_CURRENT_SOURCE_DIR}\\..\\boost_1_58_0")
 set(BOOSTROOT "${CMAKE_CURRENT_SOURCE_DIR}\\..\\boost_1_58_0")
